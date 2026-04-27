@@ -1,16 +1,24 @@
+# Imports random number generator
 import random
 
-# Variable defining chances of making a shot and the time remaining
-time_left_in_sec = 30
-
-thr_pt_chance = .3
-two_pt_chance = .5
-ft_chance  = .7
+# Important variables for basics of code
+time_left = 30
+thr_pt = .3
+two_pt = .5
+frthr  = .7
 off_rebound = .2
-ovr_time_vict = .5
+ovr_vict = .5
+possesion = True
+
 
 # Three point calculator
-if random.random() < .3:
-    + 3
-else:
-    + 0
+while possesion:
+    if time_left > 0:
+        if random.random() < thr_pt:
+            + 3
+            time_left - 2
+        else:
+            + 0
+            time_left - 2
+    else:
+        break
