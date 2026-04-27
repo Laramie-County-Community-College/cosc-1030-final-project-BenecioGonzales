@@ -1,6 +1,5 @@
 # Imports random number generator
-import random
-
+import random    
 
 # Important variables for basics of code
 time_left = 30
@@ -10,6 +9,7 @@ frthr  = .7
 off_rebound = .2
 ovr_vict = .5
 team_pts = 0
+team_pts_total = 0
 enemy_pts = 3
 thr_pt_vict = 0
 two_pt_vict = 0
@@ -35,7 +35,15 @@ for times in range(10000):
             thr_pt_vict += 1
         else:
             thr_pt_vict += 0
-    else:
-        thr_pt_vict += 0
+    team_pts_total += team_pts
 
-print(f"The percentage chance of winning only going for threes is {thr_pt_vict/10000 * 100:.0f}%
+# Two point calculator
+for times in range(10000):
+    time_left = 30
+    team_pts = 0
+    enemy_pts = 3
+    while time_left > 0:
+        
+
+
+print(f"The percentage chance of winning only going for threes is {thr_pt_vict/10000 * 100:.0f}% and the average points scored is {team_pts_total/10000:.2f}")
