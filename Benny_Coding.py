@@ -9,7 +9,8 @@ fr_thr_per  = .68
 off_rebound = .21
 ovr_vict = .5
 team_pts = 0
-team_pts_total = 0
+team_pts_total_thr = 0
+team_pts_total_two = 0
 enemy_pts = 3
 thr_pt_vict = 0
 two_pt_vict = 0
@@ -35,7 +36,7 @@ for times in range(10000):
             thr_pt_vict += 1
         else:
             thr_pt_vict += 0
-    team_pts_total += team_pts
+    team_pts_total_thr += team_pts
 
 # Two point calculator
 for times in range(10000):
@@ -65,9 +66,16 @@ for times in range(10000):
                     time_left -= 10
             else:
                 time_left -= 10
-    
-        
+    # Score calculator
+    if team_pts > enemy_pts:
+        two_pt_vict += 1
+    elif team_pts == enemy_pts:
+        if random.random() < ovr_vict:
+            two_pt_vict += 1
+        else:
+            two_pt_vict += 0
+    team_pts_total_two += team_pts
 
 
-print(f"The percentage chance of winning only going for threes is {thr_pt_vict/10000 * 100:.1f}% and the average points scored is {team_pts_total/10000:.2f}")
-print(f"The percentage chance of winning only going for threes is {thr_pt_vict/10000 * 100:.1f}% and the average points scored is {team_pts_total/10000:.2f}")
+print(f"The percentage chance of winning only going for threes is {thr_pt_vict/10000 * 100:.1f}% and the average points scored is {team_pts_total_thr/10000:.2f}")
+print(f"The percentage chance of winning only going for twos is {two_pt_vict/10000 * 100:.1f}% and the average points scored is {team_pts_total_two/10000:.2f}")
