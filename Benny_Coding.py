@@ -46,8 +46,28 @@ for times in range(10000):
         if time_left > 10:
             if random.random() < two_pt_per:
                 team_pts += 2
-                time_left 
+                time_left -= 10
+            else:
+                time_left -= 10
+
+        # Fouling the enemy
+        else:
+            for times in range(2):
+                if random.random() < fr_thr_per:
+                    enemy_pts += 1
+                else:
+                    enemy_pts += 0
+            if random.random() < off_rebound:
+                if random.random() < two_pt_per:
+                    team_pts += 2
+                    time_left -= 10
+                else:
+                    time_left -= 10
+            else:
+                time_left -= 10
+    
         
 
 
+print(f"The percentage chance of winning only going for threes is {thr_pt_vict/10000 * 100:.1f}% and the average points scored is {team_pts_total/10000:.2f}")
 print(f"The percentage chance of winning only going for threes is {thr_pt_vict/10000 * 100:.1f}% and the average points scored is {team_pts_total/10000:.2f}")
