@@ -12,13 +12,12 @@ possesion = True
 
 
 # Three point calculator
-while possesion:
-    if time_left > 0:
-        if random.random() < thr_pt:
+if time_left > 0:
+    if random.random() < thr_pt:
             + 3
             time_left - 2
-        else:
+    else:
             + 0
             time_left - 2
-    else:
-        break
+else:
+    break
