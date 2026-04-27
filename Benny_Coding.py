@@ -23,9 +23,9 @@ for times in range(10000):
     while time_left > 0:
         if random.random() < thr_pt_per:
             team_pts += 3
-            time_left -= 15
+            time_left -= 10
         else:
-            time_left -= 15
+            time_left -= 10
 
     # Score calculator
     if team_pts > enemy_pts:
@@ -43,6 +43,10 @@ for times in range(10000):
     team_pts = 0
     enemy_pts = 3
     while time_left > 0:
+        if time_left > 10:
+            if random.random() < two_pt_per:
+                team_pts += 2
+                time_left 
         
 
 
