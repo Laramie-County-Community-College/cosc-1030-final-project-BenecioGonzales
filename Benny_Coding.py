@@ -16,19 +16,26 @@ two_pt_vict = 0
 
 
 # Three point calculator
-while time_left > 0:
-    if random.random() < thr_pt:
+for times in range(10000):
+    time_left = 30
+    team_pts = 0
+    enemy_pts = 3
+    while time_left > 0:
+        if random.random() < thr_pt:
             team_pts += 3
             time_left -= 10
-    else:
+        else:
             time_left -= 10
-else:
+
+    # Score calculator
     if team_pts > enemy_pts:
         thr_pt_vict += 1
     elif team_pts == enemy_pts:
-        if random.random() > ovr_vict:
+        if random.random() < ovr_vict:
             thr_pt_vict += 1
         else:
-            thr_pt_vict += 1
+            thr_pt_vict += 0
     else:
-        thr_pt_vict += 1
+        thr_pt_vict += 0
+
+print(f"The percentage chance of winning only going for threes is {thr_pt_vict/10000 * 100:.0f}%")
