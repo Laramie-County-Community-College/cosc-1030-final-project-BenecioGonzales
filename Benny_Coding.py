@@ -11,20 +11,24 @@ off_rebound = .2
 ovr_vict = .5
 team_pts = 0
 enemy_pts = 3
-
+thr_pt_vict = 0
+two_pt_vict = 0
 
 
 # Three point calculator
-if time_left > 0:
+while time_left > 0:
     if random.random() < thr_pt:
-            team_pts + 3
-            time_left - 10
+            team_pts += 3
+            time_left -= 10
     else:
-            team_pts + 3
-            time_left - 10
+            time_left -= 10
 else:
-    if team_pts < enemy_pts:
-        loss
+    if team_pts > enemy_pts:
+        thr_pt_vict += 1
     elif team_pts == enemy_pts:
         if random.random() > ovr_vict:
-            
+            thr_pt_vict += 1
+        else:
+            thr_pt_vict += 1
+    else:
+        thr_pt_vict += 1
