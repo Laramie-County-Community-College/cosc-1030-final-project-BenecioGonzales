@@ -3,9 +3,9 @@ import random
 
 # Important variables for basics of code
 time_left = 30
-thr_pt = .32
-two_pt = .53
-frthr  = .68
+thr_pt_per = .32
+two_pt_per = .53
+fr_thr_per  = .68
 off_rebound = .21
 ovr_vict = .5
 team_pts = 0
@@ -21,11 +21,11 @@ for times in range(10000):
     team_pts = 0
     enemy_pts = 3
     while time_left > 0:
-        if random.random() < thr_pt:
+        if random.random() < thr_pt_per:
             team_pts += 3
-            time_left -= 10
+            time_left -= 15
         else:
-            time_left -= 10
+            time_left -= 15
 
     # Score calculator
     if team_pts > enemy_pts:
