@@ -46,4 +46,4 @@ for times in range(10000):
         
 
 
-print(f"The percentage chance of winning only going for threes is {thr_pt_vict/10000 * 100:.0f}% and the average points scored is {team_pts_total/10000:.2f}")
+print(f"The percentage chance of winning only going for threes is {thr_pt_vict/10000 * 100:.1f}% and the average points scored is {team_pts_total/10000:.2f}")
