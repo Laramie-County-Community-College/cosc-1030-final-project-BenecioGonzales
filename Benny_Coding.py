@@ -3,10 +3,10 @@ import random
 
 # Important variables for basics of code
 time_left = 30
-thr_pt = .3
-two_pt = .5
-frthr  = .7
-off_rebound = .2
+thr_pt = .32
+two_pt = .53
+frthr  = .68
+off_rebound = .21
 ovr_vict = .5
 team_pts = 0
 team_pts_total = 0
