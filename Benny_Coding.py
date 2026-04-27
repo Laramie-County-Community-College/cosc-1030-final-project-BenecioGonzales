@@ -38,4 +38,4 @@ for times in range(10000):
     else:
         thr_pt_vict += 0
 
-print(f"The percentage chance of winning only going for threes is {thr_pt_vict/10000 * 100:.0f}%")
+print(f"The percentage chance of winning only going for threes is {thr_pt_vict/10000 * 100:.0f}%
