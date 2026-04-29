@@ -2,10 +2,10 @@
 import random    
 
 # Important variables for basics of code
-thr_pt_per = .32
-two_pt_per = .53
+thr_pt_per = .3
+two_pt_per = .51
 fr_thr_per  = .68
-off_rebound = .21
+off_rebound = .28
 ovr_vict = .5
 
 # Defines the function
@@ -30,27 +30,23 @@ def simulate(strategy):
 
             # Two point strategy
             elif strategy == "two":
-                if possession == True:
+                if possession:
                     if random.random() < two_pt_per:
                         team_pts += 2
-                        time_left -= random.randint(8, 12)
+                        time_left -= random.randint(6, 10)
                         possession = False
                     else:
-                        time_left -= random.randint(8, 12)
-                        if random.random() < off_rebound
+                        time_left -= random.randint(6, 10)
+                        if random.random() < off_rebound:
                             possession = True
-                        else:
-                            possession = False
                             
                 # Fouling the enemy
-                elif possession == False:
+                elif not possession:
                     for times in range(2):
                         if random.random() < fr_thr_per:
                             enemy_pts += 1
-                            possession  = True
-                        else:
-                            enemy_pts += 0
-                            possession = True
+                    time_left -= random.randint(3, 5)
+                    possession = True
 
         # Score calculator
         if team_pts > enemy_pts:
@@ -64,5 +60,5 @@ def simulate(strategy):
 wins_3pt, thr_avg_pts = simulate("three")
 wins_2pt, two_avg_pts = simulate("two")
 
-print(f"The percentage chance of winning only going for threes is {wins_3pt/10000 * 100:.1f}% and the average points scored is {thr_avg_pts:.2f}")
-print(f"The percentage chance of winning only going for twos is {wins_2pt/10000 * 100:.1f}% and the average points scored is {two_avg_pts:.2f}")
+print(f"The percentage chance of winning only going for threes is {wins_3pt/10000 * 100:.1f}% and the average points scored is {thr_avg_pts:.2f}.")
+print(f"The percentage chance of winning only going for twos is {wins_2pt/10000 * 100:.1f}% and the average points scored is {two_avg_pts:.2f}.")
