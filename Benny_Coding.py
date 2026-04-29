@@ -24,7 +24,7 @@ for times in range(10000):
     while time_left > 0:
         if random.random() < thr_pt_per:
             team_pts += 3
-            time_left -= 10
+            time_left -= random.randint(8, 12)
         else:
             time_left -= 10
 
