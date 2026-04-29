@@ -17,7 +17,7 @@ def simulate(strategy):
         time_left = 30
         team_pts = 0
         enemy_pts = 3
-        posession = True
+        possession = True
         while time_left > 0:
             
             # Three point strategy
@@ -30,33 +30,27 @@ def simulate(strategy):
 
             # Two point strategy
             elif strategy == "two":
-                if posession == True:
+                if possession == True:
                     if random.random() < two_pt_per:
                         team_pts += 2
                         time_left -= random.randint(8, 12)
                         possession = False
                     else:
                         time_left -= random.randint(8, 12)
-                        possession = False
-                elif posession == False:
-                    if random.random() < off_rebound:
-                        possession = True
-
-                    # Fouling the enemy
-                    else:
-                        for times in range(2):
-                            if random.random() < fr_thr_per:
-                                enemy_pts += 1
-                            else:
-                                enemy_pts += 0
-                        if random.random() < off_rebound:
-                            if random.random() < two_pt_per:
-                                team_pts += 2
-                                time_left -= random.randint(8, 12)
-                            else:
-                                time_left -= random.randint(8, 12)
+                        if random.random() < off_rebound
+                            possession = True
                         else:
-                            time_left -= random.randint(8, 12)
+                            possession = False
+                            
+                # Fouling the enemy
+                elif possession == False:
+                    for times in range(2):
+                        if random.random() < fr_thr_per:
+                            enemy_pts += 1
+                            possession  = True
+                        else:
+                            enemy_pts += 0
+                            possession = True
 
         # Score calculator
         if team_pts > enemy_pts:
