@@ -17,6 +17,7 @@ def simulate(strategy):
         time_left = 30
         team_pts = 0
         enemy_pts = 3
+        posession = True
         while time_left > 0:
             
             # Three point strategy
@@ -29,8 +30,35 @@ def simulate(strategy):
 
             # Two point strategy
             elif strategy == "two":
+                if posession == True:
+                    if random.random() < two_pt_per:
+                        team_pts += 2
+                        time_left -= random.randint(8, 12)
+                        possession = False
+                    else:
+                        time_left -= random.randint(8, 12)
+                        possession = False
+                elif posession == False:
+                    if random.random() < off_rebound:
+                        possession = True
 
-            # Score calculator
+                    # Fouling the enemy
+                    else:
+                        for times in range(2):
+                            if random.random() < fr_thr_per:
+                                enemy_pts += 1
+                            else:
+                                enemy_pts += 0
+                        if random.random() < off_rebound:
+                            if random.random() < two_pt_per:
+                                team_pts += 2
+                                time_left -= random.randint(8, 12)
+                            else:
+                                time_left -= random.randint(8, 12)
+                        else:
+                            time_left -= random.randint(8, 12)
+
+        # Score calculator
         if team_pts > enemy_pts:
                 wins += 1
         elif team_pts == enemy_pts:
@@ -38,44 +66,6 @@ def simulate(strategy):
                     wins += 1
         team_pts_total += team_pts
     return wins, team_pts_total/10000
-
-# Two point calculator
-for times in range(10000):
-    time_left = 30
-    team_pts = 0
-    enemy_pts = 3
-    while time_left > 0:
-        if time_left > 10:
-            if random.random() < two_pt_per:
-                team_pts += 2
-                time_left -= random.randint(8, 12)
-            else:
-                time_left -= random.randint(8, 12)
-
-        # Fouling the enemy
-        else:
-            for times in range(2):
-                if random.random() < fr_thr_per:
-                    enemy_pts += 1
-                else:
-                    enemy_pts += 0
-            if random.random() < off_rebound:
-                if random.random() < two_pt_per:
-                    team_pts += 2
-                    time_left -= random.randint(8, 12)
-                else:
-                    time_left -= random.randint(8, 12)
-            else:
-                time_left -= random.randint(8, 12)
-    # Score calculator
-    if team_pts > enemy_pts:
-        two_pt_vict += 1
-    elif team_pts == enemy_pts:
-        if random.random() < ovr_vict:
-            two_pt_vict += 1
-        else:
-            two_pt_vict += 0
-    team_pts_total_two += team_pts
 
 wins_3pt, thr_avg_pts = simulate("three")
 wins_2pt, two_avg_pts = simulate("two")
