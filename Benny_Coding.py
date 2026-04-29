@@ -15,6 +15,8 @@ enemy_pts = 3
 thr_pt_vict = 0
 two_pt_vict = 0
 
+# Defines the function
+
 
 # Three point calculator
 for times in range(10000):
@@ -26,7 +28,7 @@ for times in range(10000):
             team_pts += 3
             time_left -= random.randint(8, 12)
         else:
-            time_left -= 10
+            time_left -= random.randint(8, 12)
 
     # Score calculator
     if team_pts > enemy_pts:
@@ -47,9 +49,9 @@ for times in range(10000):
         if time_left > 10:
             if random.random() < two_pt_per:
                 team_pts += 2
-                time_left -= 10
+                time_left -= random.randint(8, 12)
             else:
-                time_left -= 10
+                time_left -= random.randint(8, 12)
 
         # Fouling the enemy
         else:
@@ -61,11 +63,11 @@ for times in range(10000):
             if random.random() < off_rebound:
                 if random.random() < two_pt_per:
                     team_pts += 2
-                    time_left -= 10
+                    time_left -= random.randint(8, 12)
                 else:
-                    time_left -= 10
+                    time_left -= random.randint(8, 12)
             else:
-                time_left -= 10
+                time_left -= random.randint(8, 12)
     # Score calculator
     if team_pts > enemy_pts:
         two_pt_vict += 1
